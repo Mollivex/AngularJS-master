@@ -11,43 +11,18 @@
     <!-- ng-include directive -->
     <header ng-include="'header.html'"></header>
 
-    <!-- Two-way data binding -->
-    <input type="text" ng-model="favMeat" placeholder="enter your fav meat"/>
-    <p>Your fav meat is: {{favMeat}}</p>
+    <!-- ng-show (ng-hide) directive -->
+    <div class="content">
 
-    <!-- Expressions (ng-init="color='orange'") -->
-    <p class="{{color}}">hello dudes!</p>
+      <div ng-controller="NinjaController">
+        <input type="text" ng-model="search" placeholder="Search for a ninja"/>
+      </div>
 
-    <!-- ng-repeat directory (ng-init="ninjas=['yoshi', 'cristal', 'ryu', 'shaun', 'sukiro', 'karioshi']") -->
-    <ul>
-      <li ng-repeat="ninja in ninjas">{{ninja}}</li>
-    </ul>
-
-    <!-- Modules section -->
-    <!-- Adding app/app.js module -->
-
-    <!-- Controllers section -->
-    <div ng-controller="NinjaController">
-      <p>{{message}}</p>
-
-      <ul>
-        <li ng-repeat="ninja in ninjas">{{ninja}}</li>
-      </ul>
-      
-    </div>
-
-    <!-- Filters section -->
-    <div ng-controller="NinjaController">
-
-      <input type="text" placeholder="enter the name" ng-model="search"/>
-
-      <ul>
-        <li class="filter" ng-repeat="ninja in ninjas | orderBy: 'name' | filter: search">{{ninja.name}} - {{ninja.rate | currency}}</li>
-      </ul>
-
-      <ul>
-        <li ng-repeat="ninja in ninjas | orderBy: '-name'">{{ninja.name}}</li>
-      </ul>
+      <div ng-controller="NinjaController">
+        <ul>
+          <li class="filter" ng-repeat="ninja in ninjas | orderBy: 'name' | filter: search" ng-show="ninja.available">{{ninja.name}} - {{ninja.rate | currency}}</li>
+        </ul>
+      </div>
 
     </div>
 
