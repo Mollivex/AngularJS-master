@@ -2,7 +2,10 @@ var myNinjaApp = angular.module('myNinjaAppName', [])
 
 myNinjaApp.controller('NinjaController', ['$scope', function($scope){
 
-    $scope.message = "hey y'all";
+    $scope.removeNinja = function(ninja){
+        var removedNinja = $scope.ninjas.indexOf(ninja)
+        $scope.ninjas.splice(removedNinja, 1)
+    };
 
     $scope.ninjas = [
         {
@@ -37,7 +40,7 @@ myNinjaApp.controller('NinjaController', ['$scope', function($scope){
         },
         {
             name: "Karioshi",
-            belt: "white",
+            belt: "green",
             rate: 50,
             available: true
         }
