@@ -8,6 +8,9 @@
   </head>
   <body >
 
+    <!-- ng-include directive -->
+    <header ng-include="'header.html'"></header>
+
     <!-- Two-way data binding -->
     <input type="text" ng-model="favMeat" placeholder="enter your fav meat"/>
     <p>Your fav meat is: {{favMeat}}</p>
@@ -43,7 +46,7 @@
       </ul>
 
       <ul>
-        <li class="filter" ng-repeat="ninja in ninjas | orderBy: '-name'">{{ninja.name}}</li>
+        <li ng-repeat="ninja in ninjas | orderBy: '-name'">{{ninja.name}}</li>
       </ul>
 
     </div>
