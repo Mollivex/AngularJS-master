@@ -1,3 +1,4 @@
+
 var myNinjaApp = angular.module('myNinjaAppName', ['ngRoute'])
 
 myNinjaApp.config(['$routeProvider', function($routeProvider){
@@ -15,7 +16,7 @@ myNinjaApp.config(['$routeProvider', function($routeProvider){
 
 }])
 
-myNinjaApp.controller('NinjaController', ['$scope', function($scope){
+myNinjaApp.controller('NinjaController', ['$scope', '$http', function($scope,$http){
 
     $scope.removeNinja = function(ninja){
         var removedNinja = $scope.ninjas.indexOf(ninja)
@@ -35,49 +36,9 @@ myNinjaApp.controller('NinjaController', ['$scope', function($scope){
         $scope.newninja.rate = "";
     };
 
-    $scope.ninjas = [
-        {
-            name: "Yoshi",
-            belt: "green",
-            rate: 35,
-            available: true,
-            thumb: "content/images/ninja1.png"
-        },
-        {
-            name: "Cristal",
-            belt: "red",
-            rate: 400,
-            available: true,
-            thumb: "content/images/ninja2.png"
-        },
-        {
-            name: "Ryu",
-            belt: "black",
-            rate: 500,
-            available: true,
-            thumb: "content/images/ninja3.png"
-        },
-        {
-            name: "Shaun",
-            belt: "blue",
-            rate: 25,
-            available: true,
-            thumb: "content/images/ninja4.png"
-        },
-        {
-            name: "Sekiro",
-            belt: "purple",
-            rate: 15,
-            available: true,
-            thumb: "content/images/ninja5.png"
-        },
-        {
-            name: "Karioshi",
-            belt: "orange",
-            rate: 50,
-            available: true,
-            thumb: "content/images/ninja.png"
-        }
-    ];
+    // Retrieving external JSON data by using the $http service
+    $http.get('data/ninjas.json').then(function(response){
+        $scope.ninjas = response.data;
+  });
 
 }]);
