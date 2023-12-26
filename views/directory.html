@@ -7,7 +7,7 @@
 
         <input type="text" ng-model="search" placeholder="Search for a ninja"/>
 
-        <ul>
+        <ul id="ninja-list">
           <li ng-repeat="ninja in ninjas | orderBy: order | filter: search" ng-show="ninja.available"> 
             <!-- ng-source directive -->
             <img ng-src="{{ninja.thumb}}" style="margin: -12px 10px 0 0; float: left; width: 50px;"
@@ -25,5 +25,7 @@
           <input type="text" placeholder="rate" ng-model="newninja.rate"/>
           <input type="submit" value="Add new ninja"/>
         </form>
+
+        <a href="" ng-click="removeAll()">Remove all ninjas</a>
 
     </div>

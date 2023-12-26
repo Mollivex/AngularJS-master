@@ -1,5 +1,5 @@
 
-var myNinjaApp = angular.module('myNinjaAppName', ['ngRoute'])
+var myNinjaApp = angular.module('myNinjaAppName', ['ngRoute', 'ngAnimate'])
 
 myNinjaApp.config(['$routeProvider', function($routeProvider){
 
@@ -52,6 +52,11 @@ myNinjaApp.controller('NinjaController', ['$scope', '$http', function($scope,$ht
         $scope.newninja.name = "";
         $scope.newninja.belt = "";
         $scope.newninja.rate = "";
+    };
+
+    // Removing all ninjas
+    $scope.removeAll = function(){
+        $scope.ninjas = [];
     };
 
     // Retrieving external JSON data by using the $http service
